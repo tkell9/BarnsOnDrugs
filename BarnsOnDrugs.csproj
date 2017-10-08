@@ -81,6 +81,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\1Scripts\GameManager.cs" />
     <Compile Include="Assets\1Scripts\playerController.cs" />
     <Compile Include="Assets\1Scripts\scrollingBackground.cs" />
     <Compile Include="Assets\Controller Tester\Scripts\DetectUnknownControllerMappings.cs" />

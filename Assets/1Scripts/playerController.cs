@@ -8,7 +8,7 @@ public class playerController : MonoBehaviour {
     //private Transform thisTransform;
     //private MeshRenderer mr;
 
-    private bool scored;
+    //private bool scored;
     private string[] GamePadControls = {"AButton", "BButton", "XButton", "YButton", "LBumper", "RBumper", "LTrigger", "RTrigger", "DpadUp", "DpadDown", "DpadLeft", "DpadRight", "BackButton", "StartButton", "LJoystickVertical", "LJoystickHorizontal", "RJoystickVertical", "RJoystickHorizontal", "LJoystickButton", "RJoystickButton", };
     private string[] GamePadControlsCopy = { "AButton", "BButton", "XButton", "YButton", "LBumper", "RBumper", "LTrigger", "RTrigger", "DpadUp", "DpadDown", "DpadLeft", "DpadRight", "BackButton", "StartButton", "LJoystickVertical", "LJoystickHorizontal", "RJoystickVertical", "RJoystickHorizontal", "LJoystickButton", "RJoystickButton", };
     private string[] cuurentControls = { };
@@ -16,14 +16,8 @@ public class playerController : MonoBehaviour {
     //Keycodes for the three controls so they can be changed in a function below
     public float speed = 5f;
     public string kcUp; // = KeyCode.UpArrow;
-    public string kcDown; //= KeyCode.DownArrow;
-    public string kcShoot; //= KeyCode.Space;
-
-    private int randomNum1;
-    private int randomNum2;
-    private int randomNum3;
-        
-
+    public string kcDown; // = KeyCode.DownArrow;
+    public string kcShoot; // = KeyCode.Space;
 
     //this is for setting the keycode later.
     //kcFordward = KeyCode.W;
@@ -31,10 +25,8 @@ public class playerController : MonoBehaviour {
     
     void Start ()
     {
-        //String array for every gamepad input. Will return a random item from array to set as keycode.
-        //GamePadControls =
 
-        changeControls();
+        changeControls2();
 
     }
 
@@ -73,7 +65,7 @@ public class playerController : MonoBehaviour {
 
     }
 
-    private void randomizeNumbers()
+   /* private void randomizeNumbers()
     {
         int randomNum1 = Random.Range(0, 22);
         int randomNum2 = Random.Range(0, 22);
@@ -108,7 +100,7 @@ public class playerController : MonoBehaviour {
         return arr;
     } */
 
-    private void changeControls()
+   /* private void changeControls()
     {
         {
             if (this)
@@ -138,46 +130,32 @@ public class playerController : MonoBehaviour {
 
                 Debug.Log(NewShoot);
 
-                //kcUp = GetRandomStringItem();
-
-                //kcDown = GetRandomStringItem();
-
-                //kcShoot = GetRandomStringItem();
-
                 
-                
-
             }
         }
-    }
+    } */
 
     void changeControls2()
     {
         kcUp = GetRandomStringItem();
-
         kcDown = GetRandomStringItem();
-
         kcShoot = GetRandomStringItem();
 
-        if (kcUp == kcDown)
+        while (kcUp == kcDown)
         {
             kcUp = GetRandomStringItem();
         }
-        else { kcUp = GetRandomStringItem(); }
-
-
-        if (kcDown == kcShoot)
+        
+        while (kcDown == kcShoot)
         {
             kcDown = GetRandomStringItem();
         }
-        else { kcDown = GetRandomStringItem(); }
 
-
-        if (kcShoot == kcUp)
+        while (kcShoot == kcUp)
         {
             kcShoot = GetRandomStringItem();
         }
-        else { kcShoot = GetRandomStringItem(); }
+        
     }
 
 
