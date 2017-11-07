@@ -1,0 +1,34 @@
+fileFormatVersion: 2
+guid: b84c7b965056b4f4c9b3faf525b9df37
+timeCreated: 1509291490
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - playerCollider: {instanceID: 0}
+  - barnCollider: {instanceID: 0}
+  - key1: {instanceID: 0}
+  - key2: {instanceID: 0}
+  - key3: {instanceID: 0}
+  - AButtonSprite: {fileID: 1457666357171114, guid: 54e7e1557e10a664ab0401be3ec80c68,
+      type: 2}
+  - BButtonSprite: {instanceID: 0}
+  - XButtonSprite: {instanceID: 0}
+  - YButtonSprite: {instanceID: 0}
+  - RTButtonSprite: {instanceID: 0}
+  - LTButtonSprite: {instanceID: 0}
+  - RBButtonSprite: {instanceID: 0}
+  - LBButtonSprite: {instanceID: 0}
+  - DPUButtonSprite: {instanceID: 0}
+  - DPRButtonSprite: {instanceID: 0}
+  - DPDButtonSprite: {instanceID: 0}
+  - DPLButtonSprite: {instanceID: 0}
+  - BackButtonSprite: {instanceID: 0}
+  - StartButtonSprite: {instanceID: 0}
+  - LJoystickButtonSprite: {instanceID: 0}
+  - RJoystickButtonSprite: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
