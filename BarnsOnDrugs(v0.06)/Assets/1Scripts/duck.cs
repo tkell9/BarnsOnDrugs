@@ -6,7 +6,7 @@ public class duck : MonoBehaviour {
 
     public float duckSpeed = 3.0f;
 
-    private float deathTimer = 7.0f;
+    private float deathTimer = 15.0f;
     private float time;
 
 	// Use this for initialization

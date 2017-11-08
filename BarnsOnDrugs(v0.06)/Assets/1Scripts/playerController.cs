@@ -13,21 +13,21 @@ public class playerController : MonoBehaviour {
     public Collider2D playerCollider;
     public Collider2D barnCollider;
 
+    public Text keyUp;
+    public Text keyDown;
+    public Text keyShoot;
+
     //private Vector3 startPos;
     //private Transform thisTransform;
     //private MeshRenderer mr;
     //private bool scored;
 
-    private string[] GamePadControls = {"AButton", "BButton", "XButton", "YButton", "LBumper", "RBumper", "LTrigger", "RTrigger", "DpadUp", "DpadDown", "DpadLeft", "DpadRight", "BackButton", "StartButton", "LJoystickButton", "RJoystickButton", };
-    private string[] GamePadControlsCopy = { "AButton", "BButton", "XButton", "YButton", "LBumper", "RBumper", "LTrigger", "RTrigger", "DpadUp", "DpadDown", "DpadLeft", "DpadRight", "BackButton", "StartButton", "LJoystickButton", "RJoystickButton", };
-    private string[] cuurentControls = { };
+    private string[] GamePadControls = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "`", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "=", "tab", "[", "]", "", ";", "'", ",", ".", "/"};
+    //private string[] GamePadControlsCopy = { "AButton", "BButton", "XButton", "YButton", "LBumper", "RBumper", "LTrigger", "RTrigger", "DpadUp", "DpadDown", "DpadLeft", "DpadRight", "BackButton", "StartButton", "LJoystickButton", "RJoystickButton", };
+    //private string[] cuurentControls = { };
     public float minY, maxY;
 
-    private int randomKey1;
-    private int randomKey2;
-    private int randomKey3;
-
-    private bool spriteReset;
+    //private bool spriteReset;
 
     //Keycodes for the three controls so they can be changed in a function below
     private float speed = 5f;
@@ -62,64 +62,65 @@ public class playerController : MonoBehaviour {
     public GameObject LJoystickButtonSprite;
     public GameObject RJoystickButtonSprite;
 
-    private GameObject[] buttons = {}; 
-
+    private GameObject[] buttons = { };
+    private GameObject gameOverPanel;
 
     //this is for setting the keycode later.
     //kcFordward = KeyCode.W;
 
 
-    void Start ()
+    void Start()
     {
-        //String array for every gamepad input. Will return a random item from array to set as keycode.
+        //String array for every keyboard input. Will return a random item from array to set as keycode.
         //GamePadControls =
 
-        kcUp = "YButton";
-        kcDown = "AButton";
-        kcShoot = "XButton";
+        kcUp = "w";
+        kcDown = "s";
+        kcShoot = "space";
 
         minY = -4.0f;
         maxY = 4.0f;
 
         chooseCorrectSprite();
+        gameOverPanel = GameObject.Find("gameOverPanel");
+        gameOverPanel = GameObject.FindGameObjectWithTag("gameOverPanel");
+        //gameOverPanel.SetActive(false);
+        //gameObject.renderer.enabled = false;
+        gameOverPanel.gameObject.SetActive(false);
     }
 
 
 
     private void Update()
     {
-        spriteController();
+        keyUp.text = kcUp;
+        keyDown.text = kcDown;
+        keyShoot.text = kcShoot;
 
-        if (Input.GetButton(kcUp) == true)
+        //spriteController();
+
+        if (Input.GetKey(kcUp) == true)
         {
             transform.position += Vector3.up * speed * Time.deltaTime;
         }
 
-        if (Input.GetAxis(kcUp) > 0.1f)
-        {
-            transform.position += Vector3.up * speed * Time.deltaTime;
 
-        }
-
-        if (Input.GetButton(kcDown) == true)
+        if (Input.GetKey(kcDown) == true)
         {
             transform.position -= Vector3.up * speed * Time.deltaTime;
         }
 
-        if (Input.GetAxis(kcDown) > 0.1f)
+
+        if (Input.GetKey(kcShoot) == true)
         {
-            transform.position -= Vector3.up * speed * Time.deltaTime;
+            
         }
 
-        if (Input.GetButton(kcShoot) == true)
-        {
 
-        }
 
-        if (Input.GetAxis(kcShoot) > 0)
-        {
+        
 
-        }
+
 
         //Get players current position
         Vector3 playerPos = transform.position;
@@ -133,17 +134,17 @@ public class playerController : MonoBehaviour {
 
 
         if (Input.GetKeyDown("space"))
-        { changeControls2();
-          chooseCorrectSprite();
-          whatControlWasChosenLeft = kcUp;
-          whatControlWasChosenMid = kcDown;
-          whatControlWasChosenRight = kcShoot;
+        {   changeControls2();
+            chooseCorrectSprite();
+            whatControlWasChosenLeft = kcUp;
+            whatControlWasChosenMid = kcDown;
+            whatControlWasChosenRight = kcShoot;
         }
 
     }
 
 
-    private void OnCollisionEnter(Collision col)
+    private void OnTriggerEnter(Collider col)
     {
         if (col.gameObject.tag == "duck")
         {
@@ -157,13 +158,19 @@ public class playerController : MonoBehaviour {
         {
             GameOver();
         }
+        if (col.gameObject.tag == "Safe")
+        {
+            changeControls2();
+        }
 
     }
 
+
     void GameOver()
     {
-        Destroy(gameObject);
+        Destroy(GameObject.FindWithTag("Player"));
         Time.timeScale = 0;
+        gameOverPanel.gameObject.SetActive(true);
     }
 
 
@@ -184,7 +191,7 @@ public class playerController : MonoBehaviour {
         else
         {
             kcUp = GetRandomStringItem();
-        }        
+        }
 
         if (kcDown == kcShoot)
         {
@@ -203,9 +210,9 @@ public class playerController : MonoBehaviour {
         {
             kcShoot = GetRandomStringItem();
         }
-    } 
+    }
 
-    
+
 
     public string GetRandomStringItem()
     {
@@ -215,16 +222,17 @@ public class playerController : MonoBehaviour {
 
     //Bunch of if statements that will spawn the correct sprite prefab when the controls change.
     //Just dont look at this ever again.
+    //Unused code but I will leave it as is so that I dont break anything.
     void chooseCorrectSprite()
     {
         GameObject[] buttons = GameObject.FindGameObjectsWithTag("button");
         for (int i = 0; i < buttons.Length; i++)
         {
             Destroy(buttons[i]);
-        } 
+        }
 
     }
-    void spriteController()
+    /*void spriteController()
     {
         //LEFT
         while (whatControlWasChosenLeft == "AButton")
@@ -416,7 +424,7 @@ public class playerController : MonoBehaviour {
 
         while (whatControlWasChosenRight == "RJoystickButton")
             Instantiate(RJoystickButtonSprite, new Vector3(2.96f, 3.42f, 4.6f), Quaternion.identity);
-
-    }
+    */
 }
+
 

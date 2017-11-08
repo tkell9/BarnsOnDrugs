@@ -12,12 +12,15 @@ public class GameManager : MonoBehaviour {
     public Transform duckMidSpawn;
     public Transform duckBotSpawn;
     public GameObject duckPrefab;
+    public GameObject barnPrefab;
+    public GameObject windmillPrefab;
 
     public Transform UpKeyLocation;
     public Transform DownKeyLocation;
     public Transform ShootKeyLocation;
-    public float interpolatingPeriod = 1.0f;
+    private float interpolatingPeriod = 5.0f;
 
+    private float time2;
 
     public float objectSpeed;
 
@@ -49,6 +52,7 @@ public class GameManager : MonoBehaviour {
             Debug.Log("Spawn ducks");
             rngesus();
             duckSpawner();
+            barnSpawner();
             time -= interpolatingPeriod;
         }
 
@@ -74,12 +78,28 @@ public class GameManager : MonoBehaviour {
         }                                
     }
 
+    void barnSpawner()
+    {
+        if (randomNumBarn == 1)
+        {
+            Instantiate<GameObject>(barnPrefab, new Vector3(19.44f, -1.218f, 4.5f), Quaternion.identity);
+        }
 
+        if (randomNumBarn == 2)
+        {
+            Instantiate<GameObject>(windmillPrefab, new Vector3(16.35f, -1.67f, 4.5f), Quaternion.identity);
+        }
 
+        if (randomNumBarn == 3)
+        {
+            Instantiate<GameObject>(barnPrefab, new Vector3(19.44f, -1.218f, 4.5f), Quaternion.identity);
+
+        }
+    }
 
     void rngesus()
     {
         randomNumDuck = Random.Range(1, 4);
-        randomNumBarn = Random.Range(2, 3);
+        randomNumBarn = Random.Range(1, 4);
     }
 }

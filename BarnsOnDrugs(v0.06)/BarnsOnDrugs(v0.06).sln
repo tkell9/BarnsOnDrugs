@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2015
+# Visual Studio 2017
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BarnsOnDrugs(v0.06)", "BarnsOnDrugs(v0.06).csproj", "{48D985B1-C7B5-BDF4-EE39-772B452C5AA7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BarnsOnDrugs(v0.06).Editor", "BarnsOnDrugs(v0.06).Editor.csproj", "{5A5DC319-2CB5-4A2D-BE59-401F9C66A60E}"
