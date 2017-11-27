@@ -15,6 +15,11 @@ public class GameManager : MonoBehaviour {
     public GameObject barnPrefab;
     public GameObject windmillPrefab;
 
+    public GameObject leftKey;
+    public GameObject midKey;
+    public GameObject rightKey;
+
+
     public Transform UpKeyLocation;
     public Transform DownKeyLocation;
     public Transform ShootKeyLocation;
