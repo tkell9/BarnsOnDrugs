@@ -91,6 +91,7 @@
     <Compile Include="Assets\InputPlus\Examples\ControlExample.cs" />
     <Compile Include="Assets\InputPlus\Examples\GuiManager.cs" />
     <Compile Include="Assets\InputPlus\InputPlus.cs" />
+    <Compile Include="Assets\MenuManager.cs" />
     <Compile Include="Assets\windmill.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

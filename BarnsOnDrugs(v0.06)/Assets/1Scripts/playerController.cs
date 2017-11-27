@@ -134,11 +134,14 @@ public class playerController : MonoBehaviour {
 
 
         if (Input.GetKeyDown("space"))
-        {   changeControls2();
-            chooseCorrectSprite();
-            whatControlWasChosenLeft = kcUp;
-            whatControlWasChosenMid = kcDown;
-            whatControlWasChosenRight = kcShoot;
+        {   
+
+
+            //Left over code when "Space" was used as the debug key
+            //chooseCorrectSprite();
+            //whatControlWasChosenLeft = kcUp;
+            //whatControlWasChosenMid = kcDown;
+            //whatControlWasChosenRight = kcShoot;
         }
 
     }
